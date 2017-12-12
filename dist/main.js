@@ -9,16 +9,14 @@ var Payment = /** @class */ (function () {
     };
     Payment.prototype.onPaymentProcess = function () {
         IMP.request_pay({
-            pg: 'inicis',
+            pg: 'paypal',
+            language: 'ko',
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: '주문명:결제테스트',
-            amount: 100,
-            buyer_email: 'im@gman.io',
-            buyer_name: '박지만',
-            buyer_tel: '010-1234-5678',
-            buyer_addr: '서울특별시 강남구 삼성동',
-            buyer_postcode: '123-456',
+            amount: 1.00,
+            currency: 'USD',
+            m_redirect_url: 'http://localhost:3000/'
         }, function (rsp) {
             if (rsp.success) {
                 var msg = '결제가 완료되었습니다.';
